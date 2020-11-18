@@ -1,13 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AuthNavigation from './AuthNavigation';
 import TabNavigation from './TabNavigation';
-import PhotoNavigation from './PhotoNavigation';
 import MessageNavigation from './MessageNavigation';
 
 const Stack = createStackNavigator();
 
-// Navitation kind => Draw, Tab, Stack
 const MainNavigation = () => {
   return (
     <NavigationContainer>
@@ -16,8 +15,8 @@ const MainNavigation = () => {
         mode='modal'
         initialRouteName='TabNavigation'
       >
+        <Stack.Screen name='AuthNavigation' component={AuthNavigation} />
         <Stack.Screen name='TabNavigation' component={TabNavigation} />
-        <Stack.Screen name='PhotoNavigation' component={PhotoNavigation} />
         <Stack.Screen name='MessageNavigation' component={MessageNavigation} />
       </Stack.Navigator>
     </NavigationContainer>

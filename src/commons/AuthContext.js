@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // For using functions about login in children
 export const AuthContext = createContext();
@@ -9,7 +9,7 @@ export const AuthProvider = ({ isLoggedIn: isLoggedInProps, children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInProps);
 
   const logUserIn = async (token) => {
-    console.log('--> token is will save -> ', token);
+    console.log('login token :', token);
 
     try {
       await AsyncStorage.setItem('isLoggedIn', 'true');
@@ -24,6 +24,7 @@ export const AuthProvider = ({ isLoggedIn: isLoggedInProps, children }) => {
   const logUserOut = async () => {
     try {
       await AsyncStorage.setItem('isLoggedIn', 'false');
+      await AsyncStorage.setItem('jwt', '');
       setIsLoggedIn(false);
     } catch (e) {
       console.log(e);

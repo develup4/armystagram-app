@@ -11,8 +11,8 @@ const Container = styled.View`
   padding: 10px;
   margin: 0px 50px;
   border-radius: 4px;
-  width: ${dimensions.width / 2}px;
-  margin-bottom: 25px;
+  width: ${dimensions.width / 1.7}px;
+  height: ${dimensions.height / 20}px;
 `;
 
 const Text = styled.Text`
@@ -24,7 +24,19 @@ const Text = styled.Text`
 const AuthBoutton = ({ text, onPress, loading = false }) => (
   <Touchable disabled={loading} onPress={onPress}>
     <Container>
-      {loading ? <ActivityIndicator color={'white'} /> : <Text>{text}</Text>}
+      {loading ? (
+        <ActivityIndicator color={'white'} />
+      ) : (
+        <Text
+          style={{
+            fontFamily: 'NanumGothicExtraBold',
+            fontSize: 12,
+            marginTop: 4,
+          }}
+        >
+          {text}
+        </Text>
+      )}
     </Container>
   </Touchable>
 );

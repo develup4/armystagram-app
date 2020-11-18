@@ -1,18 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import dimensions from '../../styles/dimensions';
+import PropTypes from 'prop-types';
 
 const Container = styled.View`
   margin-bottom: 10px;
 `;
 
 const TextInput = styled.TextInput`
-  width: ${dimensions.width / 2}px;
+  width: ${dimensions.width / 1.7}px;
+  height: ${dimensions.height / 20}px;
   padding: 10px;
   background-color: ${(props) => props.theme.greyColor};
   border: 0.5px solid ${(props) => props.theme.darkGreyColor};
-  border-radius: 4px;
+  border-radius: 2px;
+  font-family: NanumSquareRoundL;
+  font-size: 12px;
 `;
 
 const AuthInput = ({
@@ -24,17 +27,19 @@ const AuthInput = ({
   onChange,
   onSubmitEditing = () => null,
   autoCorrect = true,
+  password = false,
 }) => (
   <Container>
     <TextInput
-      onChange={onChange}
+      value={value}
+      onChangeText={onChange}
+      placeholder={placeholder}
+      autoCorrect={autoCorrect}
       keyboardType={keyboardType}
       returnKeyType={returnKeyType}
-      placeholder={placeholder}
       autoCapitalize={autoCapitalize}
       onSubmitEditing={onSubmitEditing}
-      autoCorrect={autoCorrect}
-      value={value}
+      secureTextEntry={password}
     />
   </Container>
 );
